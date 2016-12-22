@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script>
+      //const annyang = require('./annyang.min.js');
+
+      // if(annyang){
+      //   console.log("detected");
+      // }else console.log("Not detected");
+    </script>     
+</head> 
+<body>
+    <div id="recognized-text">Hello</div>
+</body>
+</html>
+<script type="text/javascript">
+    // Require annyang
+    const annyang = require('annyang');
+    // Turn on debug messages
+    annyang.debug();
+    // Define sample command
+    var commands = {
+      'hello': function() {
+        console.log('world');
+      }
+    };
+
+    annyang.addCallback('soundstart', function() {
+      console.log('sound detected');
+    });
+
+    annyang.addCallback('result', function() {
+      console.log('sound stopped');
+    });
+
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+</script>
